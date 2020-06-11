@@ -2,7 +2,9 @@
 
 
 
-obnizjsをvueで使うときのサンプルです
+obnizjsをvue.jsで使うときのサンプルです
+
+[こちらのQiitaの記事](https://qiita.com/wicket/items/569afb7c10b55a9fccd2)に注意点やTipsをのせています
 
 ## Project setup
 ```

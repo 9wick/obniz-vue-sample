@@ -25,7 +25,7 @@
       ObnizSwitchState
     },
     created: function () {
-      this.obniz = new Obniz("0796-3957");
+      this.obniz = new Obniz("OBNIZ_ID_HERE");
       this.obniz.on('connect', () => {
         this.connectedState = "connected";
       });
