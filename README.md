@@ -1,5 +1,9 @@
 # obniz-vue-sample
 
+
+
+obnizjsをvueで使うときのサンプルです
+
 ## Project setup
 ```
 npm install

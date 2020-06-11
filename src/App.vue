@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    obniz state : {{connectedState}} <br/>
+    <div>
+      DisplayPrint :
+      <ObnizDisplayInput v-bind:obniz="obniz"/>
+    </div>
+    <div>
+      SwitchState:
+      <ObnizSwitchState v-bind:obniz="obniz"/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import ObnizDisplayInput from './components/ObnizDisplayInput.vue'
+  import ObnizSwitchState from './components/ObnizSwitchState.vue'
+  import Obniz from 'obniz';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+
+  export default {
+    name: 'App',
+    components: {
+      ObnizDisplayInput,
+      ObnizSwitchState
+    },
+    created: function () {
+      this.obniz = new Obniz("0796-3957");
+      this.obniz.on('connect', () => {
+        this.connectedState = "connected";
+      });
+      this.obniz.on('close', () => {
+        this.connectedState = "offline";
+      });
+    },
+    data: () => {
+      return {
+        obniz: null,
+        connectedState: "offline"
+      };
+    }
+
   }
-}
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
